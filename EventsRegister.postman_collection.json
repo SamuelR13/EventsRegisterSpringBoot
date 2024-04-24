@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "a3835f09-d836-44ef-aac0-931848c060cf",
+		"name": "EventsRegister",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34450305"
+	},
+	"item": [
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/{{idEvent}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"{{idEvent}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();",
+							"",
+							"pm.collectionVariables.set(\"idEvent\",response.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Iron Maiden\",\n    \"fecha\": \"2024-10-24\",\n    \"ubicacion\": \"Villavicencio\",\n    \"capacidad\": 5000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"90efe201-4dd9-4316-a0a3-e60cc01985b8\",\n    \"nombre\": \"Feria de las dos ruedas\",\n    \"fecha\": \"2024-05-03\",\n    \"ubicacion\": \"Medellin\",\n    \"capacidad\": 15000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/{{idEvent}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"{{idEvent}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:8080/api/v1/events",
+			"type": "string"
+		},
+		{
+			"key": "idEvent",
+			"value": ""
+		}
+	]
+}
